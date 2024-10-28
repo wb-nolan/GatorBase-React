@@ -5,9 +5,11 @@ import "../css/FileDrop.css";
 const FileDrop: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [duplicateMessage, setDupicateMessage] = useState<string | null>(null);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
+    setDupicateMessage(null);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -29,12 +31,19 @@ const FileDrop: React.FC = () => {
         body: formData,
       });
 
+      const responseData = await response.json();
+
       if (response.ok) {
-        alert("Files uploaded successfully!");
+        if (responseData.duplicates && responseData.duplicates.length > 0) {
+          setDupicateMessage(
+            `DUPLICATE BARCODES found: \n${responseData.duplicates.join(", ")}`
+          );
+        } else {
+          setDupicateMessage("File uploaded sucessfully");
+        }
         setFiles([]);
       } else {
-        const errorResponse = await response.json();
-        alert(`Failed to process files: ${errorResponse.message}`);
+        alert(`Failed to process files: ${responseData.message}`);
       }
     } catch (error) {
       console.error("Error uploading files:", error);
@@ -79,14 +88,17 @@ const FileDrop: React.FC = () => {
           <p>No file to add to the Database</p>
         )}
       </div>
-
+      {duplicateMessage && (
+        <div className="duplicate-message" style={{ whiteSpace: "pre-wrap" }}>
+          {duplicateMessage}
+        </div>
+      )}
       <button
         onClick={handleUpload}
         disabled={isUploading}
         className="upload-button"
       >
         {isUploading ? "Uploading..." : "Upload File"}
-        {/* <span className="button-subtext">(Gator Excel)</span> */}
       </button>
     </div>
   );
