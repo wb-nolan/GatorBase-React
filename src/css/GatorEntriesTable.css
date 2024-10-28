@@ -1,23 +1,32 @@
 .entries-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .entries-table th,
-  .entries-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .entries-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .search-input {
-    margin-bottom: 10px;
-    padding: 8px;
-    width: 100%;
-  }
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  
+.entries-table th,
+.entries-table td {
+  border: 1px solid var(--navy-blue);
+  padding: 8px;
+  text-align: left;
+}
+
+.entries-table th {
+  background-color: var(--navy-blue);
+  color: var(--white);
+  font-weight: bold;
+}
+
+.entries-table td {
+  background-color: var(--light-gold);
+  color: var(--navy-blue);
+}
+
+.search-input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid var(--navy-blue);
+  border-radius: 5px;
+  background-color: var(--light-gold);
+  color: var(--navy-blue);
+}

@@ -1,0 +1,15 @@
+:root {
+    --navy-blue: #001f3f;  /* Example Navy Blue Color */
+    --light-gray: #e0e0e0;  /* Example Light Gray Color */
+    --gold: #ffd700;  /* Example Gold Color */
+    --gold-accent: #ffcc00;  /* Example Gold Accent Color */
+    --white: #ffffff;  /* Example White Color */
+    --light-navy-blue: #cce5ff;
+}
+
+/* Add any additional global styles here */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--light-navy-blue);
+}

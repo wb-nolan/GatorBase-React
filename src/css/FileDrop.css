@@ -1,39 +1,66 @@
 .file-drop {
-    border: 2px dashed #007bff;
-    border-radius: 5px;
-    padding: 20px;
-    text-align: center;
-    color: #007bff;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .file-list {
-    margin-top: 10px;
-  }
-  
-  .file-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  
-  .delete-button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .upload-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+  border: 2px dashed var(--navy-blue);
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  color: var(--navy-blue);
+  cursor: pointer;
+  margin-bottom: 10px;
+  background-color: var(--light-gray);
+  transition: background-color 0.3s;
+}
+
+.file-drop:hover {
+  background-color: #e0e4e8;
+}
+
+.file-list {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.file-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  color: var(--navy-blue);
+}
+
+.delete-button {
+  margin-left: 10px;
+  padding: 5px;
+  background-color: #dc3545;
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.upload-button {
+  display: block;  /* Make it a block element */
+  margin: 20px auto;  /* Center it with automatic left and right margins */
+  padding: 10px 20px;
+  background-color: var(--gold);
+  color: var(--navy-blue);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: var(--gold-accent);
+}
+
+.button-subtext {
+  display: block; 
+  margin-top: 5px;  
+  font-size: 0.9em;  
+  color: var(--navy-blue); 
+}
