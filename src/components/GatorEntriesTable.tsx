@@ -20,6 +20,13 @@ export const columns: Column[] = [
   { label: "Ep Title", value: "ep_title" },
   { label: "Episode Number", value: "episode_number" },
   { label: "Title Episodic MPM", value: "title_no_episodic_mpm" },
+  { label: 'Content', value: "content"},
+  { label: "Asset Note", value: "asset_note" },
+  { label: "Gator MPO", value: "gator_mpm_number"},
+  { label: "Title Type", value: "title_type"},
+  { label: "Set No", value: "set_no"},
+  { label: "Set Total", value: "set_total"}
+   // Add more columns
 ];
 
 const GatorEntriesTable: React.FC = () => {
@@ -48,7 +55,16 @@ const GatorEntriesTable: React.FC = () => {
 
   useEffect(() => {
     const initialVisibleColumns = columns.reduce((acc, column) => {
-      acc[column.value] = true;
+      acc[column.value] = [
+        "title_desc",
+        "mpm_number",
+        "barcode",
+        "title_no",
+        "med_fmt",
+        "ep_title",
+        "episode_number",
+        "title_no_episodic_mpm",
+      ].includes(column.value);
       return acc;
     }, {} as { [key: string]: boolean });
     setVisibleColumns(initialVisibleColumns);
@@ -115,7 +131,6 @@ const GatorEntriesTable: React.FC = () => {
 
   return (
     <div>
-
       <div className="selector-container">
         <div>
           <label htmlFor="searchColumn">Search By:</label>
@@ -124,11 +139,13 @@ const GatorEntriesTable: React.FC = () => {
             value={searchColumn}
             onChange={handleSearchColumnChange}
           >
-            {columns.filter(column => !hiddenColumns[column.value]).map(column => (
-              <option key={column.value} value={column.value}>
-                {column.label}
-              </option>
-            ))}
+            {columns
+              .filter((column) => !hiddenColumns[column.value])
+              .map((column) => (
+                <option key={column.value} value={column.value}>
+                  {column.label}
+                </option>
+              ))}
           </select>
 
           <input
@@ -160,11 +177,13 @@ const GatorEntriesTable: React.FC = () => {
             value={secondSearchColumn}
             onChange={(e) => setSecondSearchColumn(e.target.value)}
           >
-            {columns.filter(column => !hiddenColumns[column.value]).map(column => (
-              <option key={column.value} value={column.value}>
-                {column.label}
-              </option>
-            ))}
+            {columns
+              .filter((column) => !hiddenColumns[column.value])
+              .map((column) => (
+                <option key={column.value} value={column.value}>
+                  {column.label}
+                </option>
+              ))}
           </select>
           <input
             type="text"
@@ -174,10 +193,7 @@ const GatorEntriesTable: React.FC = () => {
             className="search-input"
           />
         </div>
-
-        
       </div>
-
 
       <ColumnToggle
         columns={columns}
@@ -185,7 +201,7 @@ const GatorEntriesTable: React.FC = () => {
         hiddenColumns={hiddenColumns}
         onColumnToggle={handleColumnToggle}
       />
-        <h2> Gator Entries</h2>
+      <h2> Gator Entries</h2>
       {filteredEntries.length > 0 ? (
         <EntriesTable
           filteredEntries={filteredEntries}
