@@ -1,7 +1,7 @@
 
 import React from 'react';
-import FileDrop from './componets/FileDrop';
-import GatorEntriesTable from './componets/GatorEntriesTable';
+import FileDrop from './components/FileDrop';
+import GatorEntriesTable from './components/GatorEntriesTable';
 
 const App: React.FC = () => {
     return (

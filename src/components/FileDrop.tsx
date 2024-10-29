@@ -69,7 +69,7 @@ const FileDrop: React.FC = () => {
       </div>
 
       <div className="file-list">
-        <h3>File to upload to the Gator Database:</h3>
+        <h3>Upload to the Gator Database:</h3>
         {files.length > 0 ? (
           <ul>
             {files.map((file, index) => (
@@ -84,9 +84,7 @@ const FileDrop: React.FC = () => {
               </li>
             ))}
           </ul>
-        ) : (
-          <p>No file to add to the Database</p>
-        )}
+        ) : null}
       </div>
       {duplicateMessage && (
         <div className="duplicate-message" style={{ whiteSpace: "pre-wrap" }}>

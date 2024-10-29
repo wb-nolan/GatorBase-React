@@ -1,8 +1,8 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchEntries, GatorEntry, selectEntries } from "../store/entriesSlice";
 import "../css/GatorEntriesTable.css";
-import axios from "axios";
+
 
 type SearchColumn =
   | "mpm_number"
@@ -65,6 +65,8 @@ const GatorEntriesTable: React.FC = () => {
     const matchType =
       (entryType === "movies" && !isEpisodic) ||
       (entryType === "episodics" && isEpisodic);
+
+    
 
     return matchSearch && matchType;
   });
