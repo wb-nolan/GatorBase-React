@@ -2,6 +2,7 @@
 import React from 'react';
 import FileDrop from './components/FileDrop';
 import GatorEntriesTable from './components/GatorEntriesTable';
+import './css/styles.css'
 
 const App: React.FC = () => {
     return (

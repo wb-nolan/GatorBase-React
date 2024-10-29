@@ -5,6 +5,7 @@ import ColumnToggle from "./ColumnToggle";
 import EntriesTable from "./EntriesTable";
 import { AppDispatch } from "../store/store.ts";
 import "../css/GatorEntriesTable.css";
+import "../css/styles.css"
 
 
 export type Column = {
@@ -75,13 +76,11 @@ const GatorEntriesTable: React.FC = () => {
   const filteredEntries = entries.filter((entry) => {
     const isEpisodic = Boolean(entry.title_no_episodic_mpm);
 
-    const matchSearch = entry[searchColumn as keyof GatorEntry]
-      .toString()
+    const matchSearch = (entry[searchColumn as keyof GatorEntry]?.toString() || "")
       .toLowerCase()
-      .includes(searchTerm.toLocaleLowerCase());
+      .includes(searchTerm.toLowerCase());
 
-    const matchSecondFilter = entry[secondSearchColumn as keyof GatorEntry]
-      .toString()
+    const matchSecondFilter = (entry[secondSearchColumn as keyof GatorEntry]?.toString() || "")
       .toLowerCase()
       .includes(secondSearchTerm.toLowerCase());
 

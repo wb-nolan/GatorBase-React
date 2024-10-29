@@ -43,8 +43,8 @@
 }
 
 .upload-button {
-  display: block;  /* Make it a block element */
-  margin: 20px auto;  /* Center it with automatic left and right margins */
+  display: block;  
+  margin: 20px auto;
   padding: 10px 20px;
   background-color: var(--gold);
   color: var(--navy-blue);
