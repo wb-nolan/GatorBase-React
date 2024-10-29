@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchEntries, GatorEntry, selectEntries } from "../store/entriesSlice";
 import ColumnToggle from "./ColumnToggle";
 import EntriesTable from "./EntriesTable";
+import { AppDispatch } from "../store/store.ts";
 import "../css/GatorEntriesTable.css";
-import { stat } from "fs";
+
 
 export type Column = {
   label: string;
@@ -30,7 +31,7 @@ export const columns: Column[] = [
 ];
 
 const GatorEntriesTable: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const entries = useSelector(selectEntries);
   const loading = useSelector((state: any) => state.entries.loading);
   const error = useSelector((state: any) => state.entries.error);
@@ -42,6 +43,7 @@ const GatorEntriesTable: React.FC = () => {
     columns[1].value
   );
 
+  
   const [visibleColumns, setVisibleColumns] = useState<{
     [key: string]: boolean;
   }>({});
