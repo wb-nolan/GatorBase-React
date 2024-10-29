@@ -6,8 +6,8 @@ import './css/styles.css'
 
 const App: React.FC = () => {
     return (
-        <div>
-            <h1 style={{textAlign:'center'}}>Gator DataBase</h1>
+        <div className='app-container'>
+            <h1>Gator DataBase</h1>
             <FileDrop/>
             <GatorEntriesTable/>
         </div>

@@ -14,3 +14,10 @@ body {
     background-color: var(--light-navy-blue);
 }
 
+.app-container {
+    margin: 10px;
+}
+
+.app-container h1 {
+    text-align: center;
+}
