@@ -2,7 +2,7 @@
   "name": "my-vite-react-app",
   "version": "1.0.0",
   "scripts": {
-    "dev": "HOST=0.0.0.0 PORT=80 vite",
+    "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },

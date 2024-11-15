@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0', // Use '0.0.0.0' to allow access from external devices
-    port: 80,      // Change this to your desired port
+    host: '127.0.0.1', // Use '0.0.0.0' to allow access from external devices
+    port: 3000,      // Change this to your desired port
     proxy: {
       // Proxy API requests to FastAPI
       '/api': {

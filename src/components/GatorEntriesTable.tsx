@@ -5,8 +5,7 @@ import ColumnToggle from "./ColumnToggle";
 import EntriesTable from "./EntriesTable";
 import { AppDispatch } from "../store/store.ts";
 import "../css/GatorEntriesTable.css";
-import "../css/styles.css"
-
+import "../css/styles.css";
 
 export type Column = {
   label: string;
@@ -22,13 +21,12 @@ export const columns: Column[] = [
   { label: "Ep Title", value: "ep_title" },
   { label: "Episode Number", value: "episode_number" },
   { label: "Title Episodic MPM", value: "title_no_episodic_mpm" },
-  { label: 'Content', value: "content"},
+  { label: "Content", value: "content" },
   { label: "Asset Note", value: "asset_note" },
-  { label: "Gator MPO", value: "gator_mpm_number"},
-  { label: "Title Type", value: "title_type"},
-  { label: "Set No", value: "set_no"},
-  { label: "Set Total", value: "set_total"}
-   // Add more columns
+  { label: "Gator MPO", value: "gator_mpm_number" },
+  { label: "Title Type", value: "title_type" },
+  { label: "Set No", value: "set_no" },
+  { label: "Set Total", value: "set_total" },
 ];
 
 const GatorEntriesTable: React.FC = () => {
@@ -43,8 +41,6 @@ const GatorEntriesTable: React.FC = () => {
   const [secondSearchColumn, setSecondSearchColumn] = useState<string>(
     columns[1].value
   );
-
-  
   const [visibleColumns, setVisibleColumns] = useState<{
     [key: string]: boolean;
   }>({});
@@ -76,11 +72,15 @@ const GatorEntriesTable: React.FC = () => {
   const filteredEntries = entries.filter((entry) => {
     const isEpisodic = Boolean(entry.title_no_episodic_mpm);
 
-    const matchSearch = (entry[searchColumn as keyof GatorEntry]?.toString() || "")
+    const matchSearch = (
+      entry[searchColumn as keyof GatorEntry]?.toString() || ""
+    )
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
 
-    const matchSecondFilter = (entry[secondSearchColumn as keyof GatorEntry]?.toString() || "")
+    const matchSecondFilter = (
+      entry[secondSearchColumn as keyof GatorEntry]?.toString() || ""
+    )
       .toLowerCase()
       .includes(secondSearchTerm.toLowerCase());
 
@@ -88,6 +88,7 @@ const GatorEntriesTable: React.FC = () => {
       entryType === "all" ||
       (entryType === "movies" && !isEpisodic) ||
       (entryType === "episodics" && isEpisodic);
+
     return matchSearch && matchSecondFilter && matchType;
   });
 
@@ -122,13 +123,8 @@ const GatorEntriesTable: React.FC = () => {
     return acc;
   }, {} as { [key: string]: boolean });
 
-  if (loading) return <div className="spinner"> Loading</div>;
-  if (error)
-    return (
-      <div>
-        <p>Error Fetching entries: {error}</p>
-      </div>
-    );
+  if (loading) return <div className="spinner">Loading...</div>;
+  if (error) return <div>Error fetching entries: {error}</div>;
 
   return (
     <div>
@@ -148,7 +144,6 @@ const GatorEntriesTable: React.FC = () => {
                 </option>
               ))}
           </select>
-
           <input
             type="text"
             value={searchTerm}
@@ -159,7 +154,7 @@ const GatorEntriesTable: React.FC = () => {
         </div>
 
         <div>
-          <label htmlFor="entryType"> Select Type:</label>
+          <label htmlFor="entryType">Select Type:</label>
           <select
             id="entryType"
             value={entryType}
@@ -172,7 +167,7 @@ const GatorEntriesTable: React.FC = () => {
         </div>
 
         <div>
-          <label htmlFor="secondSearchColumn"> Filter By:</label>
+          <label htmlFor="secondSearchColumn">Filter By:</label>
           <select
             id="secondSearchColumn"
             value={secondSearchColumn}
@@ -202,7 +197,7 @@ const GatorEntriesTable: React.FC = () => {
         hiddenColumns={hiddenColumns}
         onColumnToggle={handleColumnToggle}
       />
-      <h2> Gator Entries</h2>
+      <h2>Gator Entries</h2>
       {filteredEntries.length > 0 ? (
         <EntriesTable
           filteredEntries={filteredEntries}
@@ -211,7 +206,7 @@ const GatorEntriesTable: React.FC = () => {
           hiddenColumns={hiddenColumns}
         />
       ) : (
-        <div> No results</div>
+        <div>No results</div>
       )}
     </div>
   );

@@ -7,7 +7,7 @@ import './css/styles.css'
 const App: React.FC = () => {
     return (
         <div className='app-container'>
-            <h1>Gator DataBase</h1>
+            <h1>Dev Alfred (GatorBase)</h1>
             <FileDrop/>
             <GatorEntriesTable/>
         </div>
